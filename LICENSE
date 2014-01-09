@@ -1,7 +1,9 @@
 Copyright (c) 2014, Smoke-And-Wires
 All rights reserved.
 
-This license is intended to cover all new code, and changes.
+This license is intended to cover all new code, and changes. Much of this code has been 
+coppied and altered from the Adafruit TFT library and therefore much of this code remains 
+under their Software License.
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:
