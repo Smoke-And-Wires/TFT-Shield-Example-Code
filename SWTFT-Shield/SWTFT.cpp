@@ -15,12 +15,6 @@
 #define TFTWIDTH   240
 #define TFTHEIGHT  320
 
-// LCD controller chip identifiers
- #define ID_7575    1
- #define ID_932X    0
- #define ID_UNKNOWN 0xFF
-
-
 // Constructor for breakout board (configurable LCD control lines).
 // Can still use this w/shield, but parameters are ignored.
 SWTFT::SWTFT() :  Adafruit_GFX(TFTWIDTH, TFTHEIGHT) {
@@ -61,11 +55,6 @@ SWTFT::SWTFT() :  Adafruit_GFX(TFTWIDTH, TFTHEIGHT) {
   init();
 }
 
-// // Constructor for shield (fixed LCD control lines)
-// SWTFT::SWTFT(void) : Adafruit_GFX(TFTWIDTH, TFTHEIGHT) {
-  // init();
-// }
-
 
 void SWTFT::init(void) {
 
@@ -84,7 +73,7 @@ void SWTFT::init(void) {
 // // Initialization command table for LCD controller
  #define TFTLCD_DELAY 0xFF
 
-static const uint16_t ILI932x_regValues[] PROGMEM = {
+static const uint16_t ST7781_regValues[] PROGMEM = {
  0x0001,0x0100,    
  0x0002,0x0700,    
 0x0003,0x1030,    
@@ -184,11 +173,11 @@ void SWTFT::begin(uint16_t id) {
  
 
     uint16_t a, d;
-    driver = ID_932X;
+//    driver = ID_932X;
     CS_ACTIVE;
-    while(i < sizeof(ILI932x_regValues) / sizeof(uint16_t)) {
-      a = pgm_read_word(&ILI932x_regValues[i++]);
-      d = pgm_read_word(&ILI932x_regValues[i++]);
+    while(i < sizeof(ST7781_regValues) / sizeof(uint16_t)) {
+      a = pgm_read_word(&ST7781_regValues[i++]);
+      d = pgm_read_word(&ST7781_regValues[i++]);
       if(a == TFTLCD_DELAY) delay(d);
       else                  writeRegister16(a, d);
     }
@@ -517,18 +506,18 @@ void SWTFT::setRotation(uint8_t x) {
   // Then perform hardware-specific rotation operations...
 
   CS_ACTIVE;
- // if(driver == ID_932X) {
+ 
 
-    uint16_t t;
-    switch(rotation) {
-     default: t = 0x1030; break;
-     case 1 : t = 0x1028; break;
-     case 2 : t = 0x1000; break;
-     case 3 : t = 0x1018; break;
-    }
-    writeRegister16(0x0003, t ); // MADCTL
-    // For 932X, init default full-screen address window:
-    setAddrWindow(0, 0, _width - 1, _height - 1); // CS_IDLE happens here
+ //   uint16_t t;
+ //   switch(rotation) {
+ //    default: t = 0x1030; break;
+ //    case 1 : t = 0x1028; break;
+ //    case 2 : t = 0x1000; break;
+ //    case 3 : t = 0x1018; break;
+ //   }
+ //   writeRegister16(0x0003, t ); // MADCTL
+ //    For 932X, init default full-screen address window:
+ //   setAddrWindow(0, 0, _width - 1, _height - 1); // CS_IDLE happens here
 
   
 }
