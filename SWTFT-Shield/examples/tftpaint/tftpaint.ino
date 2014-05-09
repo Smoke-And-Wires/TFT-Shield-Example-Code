@@ -77,7 +77,11 @@ void setup(void) {
 void loop()
 {
   digitalWrite(13, HIGH);
-  Point p = ts.getPoint();
+  // Recently Point was renamed TSPoint in the TouchScreen library
+  // If you are using an older version of the library, use the
+  // commented definition instead.
+  // Point p = ts.getPoint();
+  TSPoint p = ts.getPoint();
   digitalWrite(13, LOW);
 
   // if sharing pins, you'll need to fix the directions of the touchscreen pins
