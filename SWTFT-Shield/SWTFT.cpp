@@ -10,7 +10,11 @@
 #include "pins_arduino.h"
 #include "wiring_private.h"
 #include "SWTFT.h"
+
+// Use the include which corresponde to your arduino
+//#include "mega_24_shield.h"
 #include "uno_24_shield.h"
+
 
 #define TFTWIDTH   240
 #define TFTHEIGHT  320

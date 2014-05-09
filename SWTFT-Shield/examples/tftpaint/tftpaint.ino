@@ -49,7 +49,9 @@ void setup(void) {
   
   uint16_t identifier = tft.readID();
 
-  
+  Serial.print(F("LCD driver chip: "));
+  Serial.println(identifier, HEX);
+    
 
   tft.begin(identifier);
 
