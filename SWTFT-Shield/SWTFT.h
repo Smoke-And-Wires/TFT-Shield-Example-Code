@@ -48,6 +48,9 @@ class SWTFT : public Adafruit_GFX {
   void     setAddrWindow(int x1, int y1, int x2, int y2);
   void     pushColors(uint16_t *data, uint8_t len, boolean first);
 
+      // swap
+  void swap(int16_t *a, int16_t *b);
+
   uint16_t color565(uint8_t r, uint8_t g, uint8_t b),
            readPixel(int16_t x, int16_t y),
            readID(void);
@@ -98,7 +101,7 @@ class SWTFT : public Adafruit_GFX {
 					  csPinUnset,  cdPinUnset,  wrPinUnset,  rdPinUnset,
 					  _reset;
   #endif
-  
+
 #endif
 };
 
