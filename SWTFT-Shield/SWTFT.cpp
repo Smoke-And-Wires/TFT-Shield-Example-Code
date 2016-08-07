@@ -26,7 +26,7 @@ SWTFT::SWTFT() :  Adafruit_GFX(TFTWIDTH, TFTHEIGHT) {
 
   // Convert pin numbers to registers and bitmasks
   _reset     = LCD_RESET;
- 
+
     csPort     = portOutputRegister(digitalPinToPort(LCD_CS));
     cdPort     = portOutputRegister(digitalPinToPort(LCD_CD));
     wrPort     = portOutputRegister(digitalPinToPort(LCD_WR));
@@ -45,7 +45,7 @@ SWTFT::SWTFT() :  Adafruit_GFX(TFTWIDTH, TFTHEIGHT) {
     *cdPort   |=  cdPinSet; // Signals are ACTIVE LOW
     *wrPort   |=  wrPinSet;
     *rdPort   |=  rdPinSet;
- 
+
   pinMode(LCD_CS, OUTPUT);    // Enable outputs
   pinMode(LCD_CD, OUTPUT);
   pinMode(LCD_WR, OUTPUT);
@@ -78,93 +78,93 @@ void SWTFT::init(void) {
  #define TFTLCD_DELAY 0xFF
 
 static const uint16_t ST7781_regValues[] PROGMEM = {
- 0x0001,0x0100,    
- 0x0002,0x0700,    
-0x0003,0x1030,    
-0x0008,0x0302,    
-0x0009,0x0000,   
-0x000A,0x0008,    
-//*******POWER CONTROL REGISTER INITIAL*******//    
-0x0010,0x0790,    
-0x0011,0x0005,    
-0x0012,0x0000,   
-0x0013,0x0000,    
- //delayms(50, 
-//********POWER SUPPPLY STARTUP 1 SETTING*******//    
-0x0010,0x12B0,    
-// delayms(50,  
-0x0011,0x0007,    
- //delayms(50,  
-//********POWER SUPPLY STARTUP 2 SETTING******//    
-0x0012,0x008C,    
-0x0013,0x1700,    
-0x0029,0x0022,    
-// delayms(50,   
-//******GAMMA CLUSTER SETTING******//    
-0x0030,0x0000,    
-0x0031,0x0505,    
-0x0032,0x0205,    
-0x0035,0x0206,    
-0x0036,0x0408,    
-0x0037,0x0000,    
+ 0x0001,0x0100,
+ 0x0002,0x0700,
+0x0003,0x1030,
+0x0008,0x0302,
+0x0009,0x0000,
+0x000A,0x0008,
+//*******POWER CONTROL REGISTER INITIAL*******//
+0x0010,0x0790,
+0x0011,0x0005,
+0x0012,0x0000,
+0x0013,0x0000,
+ //delayms(50,
+//********POWER SUPPPLY STARTUP 1 SETTING*******//
+0x0010,0x12B0,
+// delayms(50,
+0x0011,0x0007,
+ //delayms(50,
+//********POWER SUPPLY STARTUP 2 SETTING******//
+0x0012,0x008C,
+0x0013,0x1700,
+0x0029,0x0022,
+// delayms(50,
+//******GAMMA CLUSTER SETTING******//
+0x0030,0x0000,
+0x0031,0x0505,
+0x0032,0x0205,
+0x0035,0x0206,
+0x0036,0x0408,
+0x0037,0x0000,
 0x0038,0x0504,
-0x0039,0x0206,    
-0x003C,0x0206,    
-0x003D,0x0408,    
-// -----------DISPLAY WINDOWS 240*320-------------//    
+0x0039,0x0206,
+0x003C,0x0206,
+0x003D,0x0408,
+// -----------DISPLAY WINDOWS 240*320-------------//
 0x0050,0x0000,
-0x0051,0x00EF,   
-0x0052,0x0000,   
-0x0053,0x013F,   
-//-----FRAME RATE SETTING-------//    
-0x0060,0xA700,   
-0x0061,0x0001,   
+0x0051,0x00EF,
+0x0052,0x0000,
+0x0053,0x013F,
+//-----FRAME RATE SETTING-------//
+0x0060,0xA700,
+0x0061,0x0001,
 0x0090,0x0033, //RTNI setting
-//-------DISPLAY ON------//    
-0x0007,0x0133,    0x0001,0x0100,    
- 0x0002,0x0700,    
-0x0003,0x1030,    
-0x0008,0x0302,    
-0x0009,0x0000,   
-0x000A,0x0008,    
-//*******POWER CONTROL REGISTER INITIAL*******//    
-0x0010,0x0790,    
-0x0011,0x0005,    
-0x0012,0x0000,   
-0x0013,0x0000,    
- //delayms(50, 
-//********POWER SUPPPLY STARTUP 1 SETTING*******//    
-0x0010,0x12B0,    
-// delayms(50,  
-0x0011,0x0007,    
-// delayms(50,  
-//********POWER SUPPLY STARTUP 2 SETTING******//    
-0x0012,0x008C,    
-0x0013,0x1700,    
-0x0029,0x0022,    
-// delayms(50,   
-//******GAMMA CLUSTER SETTING******//    
-0x0030,0x0000,    
-0x0031,0x0505,    
-0x0032,0x0205,    
-0x0035,0x0206,    
-0x0036,0x0408,    
-0x0037,0x0000,    
+//-------DISPLAY ON------//
+0x0007,0x0133,    0x0001,0x0100,
+ 0x0002,0x0700,
+0x0003,0x1030,
+0x0008,0x0302,
+0x0009,0x0000,
+0x000A,0x0008,
+//*******POWER CONTROL REGISTER INITIAL*******//
+0x0010,0x0790,
+0x0011,0x0005,
+0x0012,0x0000,
+0x0013,0x0000,
+ //delayms(50,
+//********POWER SUPPPLY STARTUP 1 SETTING*******//
+0x0010,0x12B0,
+// delayms(50,
+0x0011,0x0007,
+// delayms(50,
+//********POWER SUPPLY STARTUP 2 SETTING******//
+0x0012,0x008C,
+0x0013,0x1700,
+0x0029,0x0022,
+// delayms(50,
+//******GAMMA CLUSTER SETTING******//
+0x0030,0x0000,
+0x0031,0x0505,
+0x0032,0x0205,
+0x0035,0x0206,
+0x0036,0x0408,
+0x0037,0x0000,
 0x0038,0x0504,
-0x0039,0x0206,    
-0x003C,0x0206,    
-0x003D,0x0408,    
-// -----------DISPLAY WINDOWS 240*320-------------//    
+0x0039,0x0206,
+0x003C,0x0206,
+0x003D,0x0408,
+// -----------DISPLAY WINDOWS 240*320-------------//
 0x0050,0x0000,
-0x0051,0x00EF,   
-0x0052,0x0000,   
-0x0053,0x013F,   
-//-----FRAME RATE SETTING-------//    
-0x0060,0xA700,   
-0x0061,0x0001,   
+0x0051,0x00EF,
+0x0052,0x0000,
+0x0053,0x013F,
+//-----FRAME RATE SETTING-------//
+0x0060,0xA700,
+0x0061,0x0001,
 0x0090,0x0033, //RTNI setting
-//-------DISPLAY ON------//    
-0x0007,0x0133,   
+//-------DISPLAY ON------//
+0x0007,0x0133,
 };
 
 
@@ -174,7 +174,7 @@ void SWTFT::begin(uint16_t id) {
 
   reset();
 
- 
+
 
     uint16_t a, d;
 //    driver = ID_932X;
@@ -188,7 +188,7 @@ void SWTFT::begin(uint16_t id) {
     setRotation(rotation);
     setAddrWindow(0, 0, TFTWIDTH-1, TFTHEIGHT-1);
 
-  
+
 }
 
 void SWTFT::reset(void) {
@@ -220,7 +220,7 @@ void SWTFT::reset(void) {
 void SWTFT::setAddrWindow(int x1, int y1, int x2, int y2) {
 
   CS_ACTIVE;
-  
+
     // Values passed are in current (possibly rotated) coordinate
     // system.  932X requires hardware-native coords regardless of
     // MADCTL, so rotate inputs as needed.  The address counter is
@@ -270,7 +270,7 @@ void SWTFT::setAddrWindow(int x1, int y1, int x2, int y2) {
     writeRegister16(0x0020, x ); // Set address counter to top left
     writeRegister16(0x0021, y );
 
-  
+
   CS_IDLE;
 }
 
@@ -360,7 +360,7 @@ void SWTFT::drawFastHLine(int16_t x, int16_t y, int16_t length,
   setAddrWindow(x, y, x2, y);
   flood(color, length);
    setAddrWindow(0, 0, _width - 1, _height - 1);
-  
+
 }
 
 void SWTFT::drawFastVLine(int16_t x, int16_t y, int16_t length,
@@ -384,10 +384,10 @@ void SWTFT::drawFastVLine(int16_t x, int16_t y, int16_t length,
   setAddrWindow(x, y, x, y2);
   flood(color, length);
   setAddrWindow(0, 0, _width - 1, _height - 1);
-  
+
 }
 
-void SWTFT::fillRect(int16_t x1, int16_t y1, int16_t w, int16_t h, 
+void SWTFT::fillRect(int16_t x1, int16_t y1, int16_t w, int16_t h,
   uint16_t fillcolor) {
   int16_t  x2, y2;
 
@@ -415,12 +415,12 @@ void SWTFT::fillRect(int16_t x1, int16_t y1, int16_t w, int16_t h,
   setAddrWindow(x1, y1, x2, y2);
   flood(fillcolor, (uint32_t)w * (uint32_t)h);
   setAddrWindow(0, 0, _width - 1, _height - 1);
-  
+
 }
 
 void SWTFT::fillScreen(uint16_t color) {
-  
- 
+
+
 
     // For the 932X, a full-screen address window is already the default
     // state, just need to set the address pointer to the top-left corner.
@@ -438,7 +438,7 @@ void SWTFT::fillScreen(uint16_t color) {
     writeRegister16(0x0020, x);
     writeRegister16(0x0021, y);
 
- 
+
   flood(color, (long)TFTWIDTH * (long)TFTHEIGHT);
 }
 
@@ -448,7 +448,7 @@ void SWTFT::drawPixel(int16_t x, int16_t y, uint16_t color) {
   if((x < 0) || (y < 0) || (x >= _width) || (y >= _height)) return;
 
   CS_ACTIVE;
- 
+
     int16_t t;
     switch(rotation) {
      case 1:
@@ -469,9 +469,9 @@ void SWTFT::drawPixel(int16_t x, int16_t y, uint16_t color) {
     writeRegister16(0x0020, x);
     writeRegister16(0x0021, y);
     writeRegister16(0x0022, color );
-	
 
-  
+
+
   CS_IDLE;
 }
 
@@ -510,7 +510,7 @@ void SWTFT::setRotation(uint8_t x) {
   // Then perform hardware-specific rotation operations...
 
   CS_ACTIVE;
- 
+
 
  //   uint16_t t;
  //   switch(rotation) {
@@ -523,7 +523,7 @@ void SWTFT::setRotation(uint8_t x) {
  //    For 932X, init default full-screen address window:
  //   setAddrWindow(0, 0, _width - 1, _height - 1); // CS_IDLE happens here
 
-  
+
 }
 
 #ifdef read8isFunctionalized
@@ -539,7 +539,7 @@ uint16_t SWTFT::readPixel(int16_t x, int16_t y) {
   if((x < 0) || (y < 0) || (x >= _width) || (y >= _height)) return 0;
 
   CS_ACTIVE;
- 
+
 
     uint8_t hi, lo;
     int16_t t;
@@ -577,7 +577,7 @@ uint16_t SWTFT::readPixel(int16_t x, int16_t y) {
     CS_IDLE;
     return ((uint16_t)hi << 8) | lo;
 
-  
+
 }
 
 // Ditto with the read/write port directions, as above.
@@ -626,13 +626,13 @@ void SWTFT::drawLine3Byte(int16_t x0, int16_t y0,
 			    uint8_t r, uint8_t g, uint8_t b) {
   int16_t steep = abs(y1 - y0) > abs(x1 - x0);
   if (steep) {
-    swap(x0, y0);
-    swap(x1, y1);
+    swap(&x0, &y0);
+    swap(&x1, &y1);
   }
 
   if (x0 > x1) {
-    swap(x0, x1);
-    swap(y0, y1);
+    swap(&x0, &x1);
+    swap(&y0, &y1);
   }
 
   int16_t dx, dy;
@@ -667,7 +667,7 @@ void SWTFT::drawPixel3(int16_t x, int16_t y, uint8_t r, uint8_t g, uint8_t b)
 if((x < 0) || (y < 0) || (x >= _width) || (y >= _height)) return;
 
   CS_ACTIVE;
- 
+
     int16_t t;
     switch(rotation) {
      case 1:
@@ -692,9 +692,9 @@ if((x < 0) || (y < 0) || (x >= _width) || (y >= _height)) return;
     writeRegister16(0x0020, x);
     writeRegister16(0x0021, y);
     writeA16B3(0x0022, r , g, b);
-	
 
-  
+
+
   CS_IDLE;
 }
 //}
@@ -746,3 +746,8 @@ void SWTFT::writeRegisterPair(uint8_t aH, uint8_t aL, uint16_t d) {
 }
 #endif
 
+void SWTFT::swap(int16_t *a, int16_t *b){
+    int16_t temp = *a;
+    *a = *b;
+    *b = temp;
+}
