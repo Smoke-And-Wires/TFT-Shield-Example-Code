@@ -13,12 +13,11 @@
 
 // Use the include which corresponde to your arduino
 //#include "mega_24_shield.h"
-#include "uno_24_shield.h"
+#include "mega_24_shield.h"
 
 
-#define TFTWIDTH   240
-#define TFTHEIGHT  320
-
+#define TFTWIDTH   320
+#define TFTHEIGHT  480
 // Constructor for breakout board (configurable LCD control lines).
 // Can still use this w/shield, but parameters are ignored.
 SWTFT::SWTFT() :  Adafruit_GFX(TFTWIDTH, TFTHEIGHT) {
